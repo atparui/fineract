@@ -519,6 +519,7 @@ public class FineractProperties {
         private FineractSecurityTwoFactorAuth twoFactor;
         private FineractSecurityHsts hsts;
         private FineractSecurityOAuth2Properties oauth2;
+        private FineractSecurityKeycloakProperties keycloak;
         private CorsProperties cors;
 
         public void set2fa(FineractSecurityTwoFactorAuth twoFactor) {
@@ -574,6 +575,14 @@ public class FineractProperties {
         public static class FineractSecurityHsts {
 
             private boolean enabled;
+        }
+
+        @Getter
+        @Setter
+        public static class FineractSecurityKeycloakProperties {
+
+            private boolean enabled;
+            private String issuerUri;
         }
     }
 

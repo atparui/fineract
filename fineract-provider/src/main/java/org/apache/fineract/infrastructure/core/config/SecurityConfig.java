@@ -48,6 +48,7 @@ import org.apache.fineract.infrastructure.security.service.TenantAwareJpaPlatfor
 import org.apache.fineract.infrastructure.security.service.TwoFactorService;
 import org.apache.fineract.notification.service.UserNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.context.ApplicationContext;
@@ -76,7 +77,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
-@ConditionalOnProperty("fineract.security.basicauth.enabled")
+@ConditionalOnProperty(name = "fineract.security.basicauth.enabled", havingValue = "true")
+@ConditionalOnExpression("!${fineract.security.keycloak.enabled:false}")
 @EnableMethodSecurity
 public class SecurityConfig {
 

@@ -50,6 +50,9 @@ public class TenantAwareAuthenticationFilter extends OncePerRequestFilter {
             } else {
                 tenantId = request.getParameter("tenantId");
             }
+            if (tenantId == null) {
+                tenantId = request.getHeader("Fineract-Platform-TenantId");
+            }
             ThreadLocalContextUtil.setTenant(tenantDetailsService.loadTenantById(tenantId, false));
             filterChain.doFilter(request, response);
         } catch (Exception e) {

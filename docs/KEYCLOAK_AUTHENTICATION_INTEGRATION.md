@@ -38,9 +38,35 @@ To use **Keycloak**, Fineract should **only** validate tokens issued by Keycloak
 
 ---
 
+## nbk-demo realm and clients (finos.atparui.com)
+
+The **nbk-demo** realm on `auth.atparui.com` is configured for Finos with two clients:
+
+| Client ID     | Use       | PKCE              | Redirect URIs |
+|---------------|-----------|-------------------|--------------------------------|
+| **finos-web** | Web (SPA) | **S256** (required) | `https://finos.atparui.com`, `https://finos.atparui.com/*` |
+| **finos-mobile** | Mobile  | **None** (no PKCE) | `https://finos.atparui.com/*`, `finos.atparui.com:/callback`, `com.atparui.finos://callback` |
+
+- **Web flow**: When users browse **https://finos.atparui.com**, the app should redirect unauthenticated users to Keycloak with `client_id=finos-web`, `redirect_uri=https://finos.atparui.com/...` (or your callback path), and PKCE `code_challenge_method=S256`. After login, Keycloak redirects back to the configured redirect URI with an authorization code.
+- **Mobile flow**: Use `client_id=finos-mobile`; no PKCE. Redirect URIs include a custom scheme `com.atparui.finos://callback` for native apps; add or change redirect URIs in Keycloak Admin as needed.
+
+**Realm URLs for nbk-demo:**
+
+| Purpose   | URL |
+|-----------|-----|
+| **Discovery** | `https://auth.atparui.com/realms/nbk-demo/.well-known/openid-configuration` |
+| **JWKS**      | `https://auth.atparui.com/realms/nbk-demo/protocol/openid-connect/certs` |
+| **Issuer**    | `https://auth.atparui.com/realms/nbk-demo` |
+| **Authorization endpoint** | `https://auth.atparui.com/realms/nbk-demo/protocol/openid-connect/auth` |
+| **Token endpoint**         | `https://auth.atparui.com/realms/nbk-demo/protocol/openid-connect/token` |
+
+Keycloak Admin Console: `https://auth.atparui.com/admin` (use the realm admin or master admin account to manage nbk-demo).
+
+---
+
 ## Keycloak endpoints (for auth.atparui.com)
 
-Replace `{realm}` with your Keycloak realm name (e.g. `fineract` or `atparui`).
+Replace `{realm}` with your Keycloak realm name (e.g. `nbk-demo`, `fineract`, or `atparui`).
 
 | Purpose | URL |
 |--------|-----|
@@ -179,5 +205,12 @@ Tenant: Fineract is multi-tenant. Today tenant is often taken from the request (
 - [ ] Basic Auth disabled when Keycloak is enabled  
 - [ ] Tenant handling (header/path) preserved if required  
 - [ ] Frontend uses Keycloak for login and sends Bearer token to Fineract  
+
+---
+
+## Implementation summary (Keycloak resource server)
+
+- **Fineract**: `fineract.security.keycloak.enabled` and `fineract.security.keycloak.issuer-uri`; when enabled, Basic Auth is off. `KeycloakResourceServerConfig` validates JWTs; `KeycloakJwtAuthenticationTokenConverter` uses `preferred_username` and `realm_access.roles`. Tenant from JWT or `Fineract-Platform-TenantId` header.
+- **Finos web app**: OIDC defaults for nbk-demo/finos-web; PKCE S256; user details from OIDC profile when using Keycloak; Bearer token and tenant header sent. See **finos-web-app/docs/KEYCLOAK_SETUP.md**.
 
 This document is based on public documentation for Spring Security OAuth2 Resource Server, Keycloak, and Fineract’s existing security code. Implementation details (property names, new classes) should be aligned with the actual Fineract codebase and your Keycloak realm/client setup.
