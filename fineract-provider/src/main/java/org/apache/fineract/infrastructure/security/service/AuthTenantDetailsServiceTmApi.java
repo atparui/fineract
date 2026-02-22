@@ -19,6 +19,7 @@
 package org.apache.fineract.infrastructure.security.service;
 
 import org.apache.fineract.infrastructure.core.domain.FineractPlatformTenant;
+import org.apache.fineract.infrastructure.security.exception.InvalidTenantIdentifierException;
 import org.apache.fineract.infrastructure.tenant.api.TenantDatabaseConfigResponse;
 import org.apache.fineract.infrastructure.tenant.api.TenantServiceApiClient;
 import org.apache.fineract.infrastructure.tenant.api.TenantServiceApiMapper;
