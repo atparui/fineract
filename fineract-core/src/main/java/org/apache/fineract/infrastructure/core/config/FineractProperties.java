@@ -122,6 +122,18 @@ public class FineractProperties {
          */
         private boolean tenantStoreManagedExternally = false;
 
+        /**
+         * Tenant resolution mode: {@code jdbc} (default) = read tenants from Fineract's tenant DB;
+         * {@code tenant-service-api} = resolve tenants via tenant-management-service API (no tenant DB in Fineract).
+         */
+        private String resolution = "jdbc";
+
+        /**
+         * Base URL of the tenant-management-service API (e.g. https://tm.atparui.com).
+         * Required when {@link #resolution} is {@code tenant-service-api}.
+         */
+        private String serviceBaseUrl;
+
         private FineractConfigProperties config;
     }
 

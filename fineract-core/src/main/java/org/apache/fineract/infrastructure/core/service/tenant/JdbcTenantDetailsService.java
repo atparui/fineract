@@ -26,6 +26,7 @@ import org.apache.fineract.infrastructure.core.domain.FineractPlatformTenant;
 import org.apache.fineract.infrastructure.security.exception.InvalidTenantIdentifierException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,9 +34,10 @@ import org.springframework.stereotype.Service;
 
 /**
  * A JDBC implementation of {@link TenantDetailsService} for loading a tenants details by a
- * <code>tenantIdentifier</code>.
+ * <code>tenantIdentifier</code>. Active when fineract.tenant.resolution=jdbc (default).
  */
 @Service("tenantDetailsService")
+@ConditionalOnProperty(name = "fineract.tenant.resolution", havingValue = "jdbc", matchIfMissing = true)
 public class JdbcTenantDetailsService implements TenantDetailsService {
 
     private final JdbcTemplate jdbcTemplate;

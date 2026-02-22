@@ -21,12 +21,14 @@ package org.apache.fineract.infrastructure.core.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConditionalOnExpression("#{ systemEnvironment['fineract_tenants_driver'] == null }")
+@ConditionalOnProperty(name = "fineract.tenant.resolution", havingValue = "jdbc", matchIfMissing = true)
 public class HikariCpConfig {
 
     // TODO: we can get rid of this config class by defining "spring.hikariTenantDataSource.hikari.*" in

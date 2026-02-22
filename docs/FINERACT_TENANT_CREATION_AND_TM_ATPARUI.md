@@ -111,12 +111,19 @@ So today, **creating a tenant in TM does not automatically create a tenant in Fi
 - Then **any** tenant created in TM (and exposed by that API) is visible to Fineract without writing to Fineract’s tenant store.  
 - Prerequisite: TM’s tenant must point to a DB that has **Fineract’s schema** (e.g. by having a “Fineract” platform and using that when provisioning).
 
-**Option D – Single tenant store: Fineract reads from tenant-service DB via views (recommended)**
+**Option D – Single tenant store: Fineract reads from tenant-service DB via views**
 
 - Use **tenant-service** as the only tenant store. In the tenant-service database, create **views** named `tenants` and `tenant_server_connections` that expose the existing `tenant` table in the shape Fineract expects.
 - Point Fineract’s **tenant datasource** (`hikariTenantDataSource`) at the **tenant-service database**. Fineract continues to run the same SELECT query (no code change); it reads from the views instead of tables.
 - Tenant **creation** happens only via tm.atparui.com; Fineract never writes to the tenant store. The old fineract-tenants schema can be retired.
 - See **[FINERACT_TENANT_VIEWS_TENANT_SERVICE.md](./FINERACT_TENANT_VIEWS_TENANT_SERVICE.md)** for view DDL, mapping, and configuration.
+
+**Option E – Fineract uses tenant-management-service API only (full isolation)**
+
+- Fineract **does not connect to any tenant store database**. It resolves tenants by calling the **tenant-management-service API** (e.g. `GET /api/tenants/{tenantId}/database-config`). No tenant DB URL or credentials in Fineract.
+- TM remains the single source of truth; TM can add Fineract-specific response fields or endpoints so its “internal logic (is) adjusted to suit the requirement of the fineract”.
+- Best isolation: tenant connection details live only in TM; Fineract only holds TM base URL and optional auth.
+- See **[FINERACT_TENANT_RESOLUTION_VIA_TENANT_SERVICE_API.md](./FINERACT_TENANT_RESOLUTION_VIA_TENANT_SERVICE_API.md)** for design, Fineract/TM changes, and comparison with the view-based approach.
 
 ---
 
