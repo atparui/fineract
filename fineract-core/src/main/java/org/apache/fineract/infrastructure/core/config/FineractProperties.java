@@ -114,6 +114,14 @@ public class FineractProperties {
         private String readOnlyParameters;
         private String readOnlyName;
 
+        /**
+         * When true, the tenant store (tenants / tenant_server_connections) is managed by an external
+         * system (e.g. tenant-management-service). Fineract will not run Liquibase on the tenant
+         * datasource; it will only use it for SELECT (tenant resolution). Set to true when pointing
+         * Fineract's tenant datasource at the tenant-service database with compatibility views.
+         */
+        private boolean tenantStoreManagedExternally = false;
+
         private FineractConfigProperties config;
     }
 

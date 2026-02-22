@@ -102,6 +102,10 @@ public class TenantDatabaseUpgradeService implements InitializingBean {
     }
 
     private void upgradeTenantStore() throws LiquibaseException {
+        if (fineractProperties.getTenant().isTenantStoreManagedExternally()) {
+            log.info("Tenant store is managed externally (e.g. tenant-service); skipping Liquibase on tenant datasource.");
+            return;
+        }
         log.info("Upgrading tenant store DB at {}:{}", fineractProperties.getTenant().getHost(), fineractProperties.getTenant().getPort());
         logTenantStoreDetails();
         if (databaseStateVerifier.isFirstLiquibaseMigration(tenantDataSource)) {
