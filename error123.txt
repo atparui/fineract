@@ -1,0 +1,704 @@
+Push event to branch develop
+Connecting to https://api.github.com using 2701117/****** (For the atparui org's jenkins requirement)
+Obtained Jenkinsfile from 20dd7b4ffbad5653fc12053b5b0df7e0a3fbd360
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential atpar-org-jenkins-githubapp
+ > git rev-parse --resolve-git-dir /var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/atparui/fineract.git # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/atparui/fineract.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials For the atparui org's jenkins requirement
+ > git fetch --no-tags --force --progress -- https://github.com/atparui/fineract.git +refs/heads/develop:refs/remotes/origin/develop # timeout=10
+Checking out Revision 20dd7b4ffbad5653fc12053b5b0df7e0a3fbd360 (develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 20dd7b4ffbad5653fc12053b5b0df7e0a3fbd360 # timeout=10
+Commit message: "fix: use ConditionalOnExpression from spring-boot-autoconfigure"
+ > git rev-list --no-walk ae8c53f237b9adb8c706b0ad3ffb3f5156a951a9 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential atpar-org-jenkins-githubapp
+ > git rev-parse --resolve-git-dir /var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/atparui/fineract.git # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/atparui/fineract.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials For the atparui org's jenkins requirement
+ > git fetch --no-tags --force --progress -- https://github.com/atparui/fineract.git +refs/heads/develop:refs/remotes/origin/develop # timeout=10
+Checking out Revision 20dd7b4ffbad5653fc12053b5b0df7e0a3fbd360 (develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 20dd7b4ffbad5653fc12053b5b0df7e0a3fbd360 # timeout=10
+Commit message: "fix: use ConditionalOnExpression from spring-boot-autoconfigure"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Setup)
+[Pipeline] sh
++ chmod +x ./gradlew
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] sh
++ ./gradlew :fineract-provider:bootJar :fineract-provider:resolve -x test --no-daemon
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :buildSrc:extractPluginRequests UP-TO-DATE
+> Task :buildSrc:generatePluginAdapters UP-TO-DATE
+> Task :buildSrc:compileJava UP-TO-DATE
+> Task :buildSrc:compileGroovy UP-TO-DATE
+> Task :buildSrc:compileGroovyPlugins UP-TO-DATE
+> Task :buildSrc:pluginDescriptors UP-TO-DATE
+> Task :buildSrc:processResources UP-TO-DATE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+
+> Configure project :
+gather git situation from jenkins environment variables: BRANCH_NAME and TAG_NAME
+matching ref: COMMIT - 20dd7b4ffbad5653fc12053b5b0df7e0a3fbd360
+  ref configuration: COMMIT - pattern: null
+    version: ${describe.tag.version.major}.${describe.tag.version.minor.next}.0-SNAPSHOT
+    describeTagPattern: .*(\d+\.\d+\.\d+).*
+    describeTagFirstParent: false
+
+project version: 0.1.0-SNAPSHOT
+
+> Task :spotlessInternalRegisterDependencies UP-TO-DATE
+> Task :fineract-cob:processResources UP-TO-DATE
+> Task :fineract-tax:processResources UP-TO-DATE
+> Task :fineract-rates:processResources UP-TO-DATE
+> Task :fineract-core:processResources UP-TO-DATE
+> Task :fineract-accounting:processResources UP-TO-DATE
+> Task :fineract-document:processResources UP-TO-DATE
+> Task :fineract-progressive-loan:processResources UP-TO-DATE
+> Task :fineract-loan-origination:processResources UP-TO-DATE
+> Task :fineract-client:processResources UP-TO-DATE
+> Task :fineract-charge:processResources UP-TO-DATE
+> Task :fineract-investor:processResources UP-TO-DATE
+> Task :fineract-branch:processResources UP-TO-DATE
+> Task :fineract-report:processResources UP-TO-DATE
+> Task :fineract-savings:processResources UP-TO-DATE
+> Task :fineract-loan:processResources UP-TO-DATE
+> Task :fineract-avro-schemas:preprocessAvroSchemas UP-TO-DATE
+> Task :fineract-validation:compileJava UP-TO-DATE
+> Task :fineract-command:compileJava UP-TO-DATE
+> Task :fineract-validation:processResources UP-TO-DATE
+> Task :fineract-validation:classes UP-TO-DATE
+> Task :fineract-validation:jar UP-TO-DATE
+> Task :fineract-command:processResources UP-TO-DATE
+> Task :fineract-command:classes UP-TO-DATE
+> Task :fineract-avro-schemas:spotlessJson UP-TO-DATE
+> Task :fineract-command:jar UP-TO-DATE
+> Task :fineract-avro-schemas:spotlessJsonApply UP-TO-DATE
+> Task :fineract-avro-schemas:buildJavaSdk UP-TO-DATE
+> Task :fineract-avro-schemas:compileJava UP-TO-DATE
+> Task :fineract-avro-schemas:processResources UP-TO-DATE
+> Task :fineract-avro-schemas:classes UP-TO-DATE
+> Task :fineract-avro-schemas:jar UP-TO-DATE
+> Task :fineract-core:compileJava UP-TO-DATE
+> Task :fineract-core:classes UP-TO-DATE
+> Task :fineract-core:jar UP-TO-DATE
+> Task :fineract-report:compileJava UP-TO-DATE
+> Task :fineract-report:classes UP-TO-DATE
+> Task :fineract-tax:compileJava UP-TO-DATE
+> Task :fineract-tax:classes UP-TO-DATE
+> Task :fineract-report:jar UP-TO-DATE
+> Task :fineract-tax:jar UP-TO-DATE
+> Task :fineract-rates:compileJava UP-TO-DATE
+> Task :fineract-rates:classes UP-TO-DATE
+> Task :fineract-loan-origination:compileJava UP-TO-DATE
+> Task :fineract-loan-origination:classes UP-TO-DATE
+> Task :fineract-loan-origination:jar UP-TO-DATE
+> Task :fineract-rates:jar UP-TO-DATE
+> Task :fineract-cob:compileJava UP-TO-DATE
+> Task :fineract-cob:classes UP-TO-DATE
+> Task :fineract-cob:jar UP-TO-DATE
+> Task :fineract-document:compileJava UP-TO-DATE
+> Task :fineract-document:classes UP-TO-DATE
+> Task :fineract-charge:compileJava UP-TO-DATE
+> Task :fineract-charge:classes UP-TO-DATE
+> Task :fineract-document:jar UP-TO-DATE
+> Task :fineract-charge:jar UP-TO-DATE
+> Task :fineract-accounting:compileJava UP-TO-DATE
+> Task :fineract-accounting:classes UP-TO-DATE
+> Task :fineract-accounting:jar UP-TO-DATE
+> Task :fineract-branch:compileJava UP-TO-DATE
+> Task :fineract-branch:classes UP-TO-DATE
+> Task :fineract-branch:jar UP-TO-DATE
+> Task :fineract-savings:compileJava UP-TO-DATE
+> Task :fineract-savings:classes UP-TO-DATE
+> Task :fineract-savings:jar UP-TO-DATE
+> Task :fineract-loan:compileJava UP-TO-DATE
+> Task :fineract-loan:classes UP-TO-DATE
+> Task :fineract-loan:jar UP-TO-DATE
+> Task :fineract-progressive-loan:compileJava UP-TO-DATE
+> Task :fineract-progressive-loan:classes UP-TO-DATE
+> Task :fineract-progressive-loan:jar UP-TO-DATE
+> Task :fineract-investor:compileJava UP-TO-DATE
+> Task :fineract-investor:classes UP-TO-DATE
+> Task :fineract-investor:jar UP-TO-DATE
+> Task :fineract-provider:generateGitProperties
+
+> Task :fineract-provider:compileJava
+warning: No processor claimed any of these annotations: /org.springframework.context.annotation.Primary,/io.swagger.v3.oas.annotations.Parameter,/org.springframework.core.annotation.Order,/org.springframework.scheduling.annotation.Async,/org.mapstruct.Mapper,/jakarta.validation.constraints.NotNull,/io.swagger.v3.oas.annotations.responses.ApiResponses,/org.springframework.boot.context.properties.ConfigurationProperties,/jakarta.persistence.Entity,/retrofit2.http.Body,/org.springframework.context.annotation.Scope,/org.springframework.beans.factory.annotation.Value,/jakarta.validation.Valid,/org.springframework.stereotype.Component,/org.apache.fineract.validation.constraints.EnumValue,/org.springframework.boot.context.properties.EnableConfigurationProperties,/org.springframework.cache.annotation.CachePut,/org.springframework.transaction.annotation.Transactional,/io.swagger.v3.oas.annotations.media.Schema,/retrofit2.http.FormUrlEncoded,/org.springframework.web.bind.annotation.GetMapping,/org.springframework.context.annotation.Bean,/jakarta.persistence.Column,/jakarta.persistence.Basic,/org.springframework.transaction.annotation.EnableTransactionManagement,/jakarta.persistence.JoinColumn,/org.springframework.context.annotation.Import,/jakarta.persistence.Enumerated,/jakarta.persistence.ManyToMany,/org.springframework.batch.core.annotation.OnWriteError,/org.springframework.web.bind.annotation.RequestParam,/jakarta.persistence.Version,/io.swagger.v3.oas.annotations.responses.ApiResponse,/org.springframework.stereotype.Controller,/org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean,/org.mapstruct.Named,/com.fasterxml.jackson.annotation.JsonIgnore,/jakarta.persistence.Converter,/jakarta.persistence.Temporal,/com.google.gson.annotations.SerializedName,/jakarta.validation.constraints.Min,/org.springframework.context.annotation.DependsOn,/jakarta.persistence.DiscriminatorValue,/org.glassfish.jersey.media.multipart.FormDataParam,/jakarta.persistence.Id,/jakarta.persistence.OrderBy,/org.springframework.context.annotation.Conditional,/org.springframework.boot.autoconfigure.condition.ConditionalOnProperty,/org.apache.fineract.validation.constraints.Locale,/jakarta.persistence.Embeddable,/com.fasterxml.jackson.annotation.JsonProperty,/org.springframework.batch.core.configuration.annotation.JobScope,/jakarta.ws.rs.Path,/retrofit2.http.Header,/jakarta.ws.rs.PUT,/org.springframework.messaging.handler.annotation.Payload,/jakarta.ws.rs.ext.Provider,/org.springframework.security.config.annotation.web.configuration.EnableWebSecurity,/org.springframework.data.jpa.repository.Modifying,/io.swagger.v3.oas.annotations.parameters.RequestBody,/org.springframework.context.annotation.Lazy,/org.springframework.web.bind.annotation.RequestBody,/org.springframework.batch.core.annotation.OnSkipInWrite,/org.mapstruct.Mapping,/io.micrometer.core.annotation.Timed,/jakarta.annotation.Nullable,/org.springframework.batch.core.annotation.AfterStep,/org.springframework.scheduling.annotation.EnableAsync,/io.github.resilience4j.retry.annotation.Retry,/org.springframework.lang.NonNull,/org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity,/org.springframework.boot.autoconfigure.condition.ConditionalOnBean,/com.fasterxml.jackson.databind.annotation.JsonDeserialize,/org.springframework.beans.factory.annotation.Autowired,/jakarta.ws.rs.DELETE,java.desktop/java.beans.Transient,/jakarta.validation.constraints.NotNull.List,/org.springframework.cache.annotation.Caching,/jakarta.persistence.EmbeddedId,/org.springframework.data.jpa.repository.config.EnableJpaRepositories,/jakarta.ws.rs.QueryParam,/jakarta.ws.rs.GET,/org.springframework.data.jpa.repository.Query,/jakarta.ws.rs.HeaderParam,/jakarta.ws.rs.ApplicationPath,/org.mapstruct.Mappings,/io.swagger.v3.oas.annotations.tags.Tag,/org.springframework.batch.integration.config.annotation.EnableBatchIntegration,/jakarta.ws.rs.DefaultValue,/org.apache.fineract.validation.constraints.LocalDate,/jakarta.persistence.JoinTable,/com.fasterxml.jackson.annotation.JsonTypeInfo,/org.springframework.kafka.annotation.KafkaListener,/org.springframework.batch.core.annotation.OnSkipInRead,/org.springframework.beans.factory.annotation.Qualifier,/jakarta.validation.constraints.NotBlank,/org.springframework.batch.core.configuration.annotation.EnableBatchProcessing,/org.apache.fineract.commands.annotation.CommandType,/org.springframework.stereotype.Service,/jakarta.validation.constraints.NotEmpty,/org.apache.fineract.infrastructure.core.jersey.serializer.legacy.JsonLocalDateArrayFormat,/org.springframework.data.jpa.repository.config.EnableJpaAuditing,/org.springframework.data.jpa.repository.Lock,/jakarta.ws.rs.core.Context,/jakarta.validation.constraints.Size,/jakarta.ws.rs.Consumes,/jakarta.ws.rs.PathParam,/jakarta.persistence.OneToOne,/edu.umd.cs.findbugs.annotations.SuppressFBWarnings,/org.springframework.context.annotation.Configuration,/jakarta.persistence.Transient,/jakarta.annotation.PostConstruct,/org.springframework.cache.annotation.Cacheable,/org.springframework.context.annotation.EnableAspectJAutoProxy,/com.fasterxml.jackson.databind.annotation.JsonSerialize,/jakarta.persistence.OneToMany,/org.springframework.data.repository.query.Param,/org.springframework.security.core.Transient,/org.springframework.context.annotation.ComponentScan,/org.springframework.integration.annotation.IntegrationComponentScan,/jakarta.persistence.Table,/org.springframework.batch.core.annotation.OnReadError,/jakarta.persistence.Embedded,/org.springframework.stereotype.Repository,/org.springframework.cache.annotation.CacheEvict,/jakarta.persistence.ManyToOne,/org.apache.fineract.infrastructure.core.api.jersey.Pagination,/retrofit2.http.POST,/com.fasterxml.jackson.annotation.JsonInclude,/org.springframework.batch.core.annotation.BeforeStep,/org.springframework.batch.core.annotation.OnProcessError,/org.springframework.boot.autoconfigure.EnableAutoConfiguration,/jakarta.ws.rs.Produces,/org.springframework.context.annotation.Profile,/retrofit2.http.FieldMap,/org.springframework.lang.Nullable,/org.springframework.batch.core.annotation.OnSkipInProcess,/io.swagger.v3.oas.annotations.Operation,/org.springframework.cache.annotation.CacheConfig,/io.swagger.v3.oas.annotations.Parameters,/jakarta.ws.rs.BeanParam,/org.apache.fineract.infrastructure.report.annotation.ReportService,/org.springframework.boot.autoconfigure.condition.ConditionalOnExpression,/jakarta.transaction.Transactional,/org.springframework.batch.core.configuration.annotation.StepScope,/jakarta.ws.rs.POST,/org.apache.fineract.infrastructure.core.annotation.WithFlushMode,/retrofit2.http.GET
+warning: No processor claimed any of these annotations: java.compiler/javax.annotation.processing.Generated,/org.springframework.beans.factory.annotation.Autowired,/org.springframework.stereotype.Component
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/template/service/TemplateMergeService.java:155: warning: [deprecation] URL(String) in URL has been deprecated
+            connection = (HttpURLConnection) new URL(url).openConnection();
+                                             ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/account/service/AccountNumberGenerator.java:185: warning: [deprecation] random(int,boolean,boolean) in RandomStringUtils has been deprecated
+        String randomNumber = RandomStringUtils.random(accountMaxLength, false, true); // NOSONAR
+                                               ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/loanaccount/service/LoanWritePlatformServiceJpaRepositoryImpl.java:2383: warning: [static] static method should be qualified by type name, ErrorHandler, instead of by an expression
+        throw errorHandler.getMappable(t, null, null, "loan.recalculateinterest");
+                          ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/service/SavingsAccountReadPlatformServiceImpl.java:1288: warning: [deprecation] <T>queryForList(String,Object[],Class<T>) in JdbcTemplate has been deprecated
+            ret = this.jdbcTemplate.queryForList(sql.toString(), new Object[] { tenantLocalDate }, Long.class);
+                                   ^
+  where T is a type-variable:
+    T extends Object declared in method <T>queryForList(String,Object[],Class<T>)
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/service/SavingsAccountReadPlatformServiceImpl.java:1312: warning: [deprecation] <T>queryForList(String,Object[],Class<T>) in JdbcTemplate has been deprecated
+            ret = this.jdbcTemplate.queryForList(sql.toString(), new Object[] { tenantLocalDate }, Long.class);
+                                   ^
+  where T is a type-variable:
+    T extends Object declared in method <T>queryForList(String,Object[],Class<T>)
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/service/SavingsAccountWritePlatformServiceJpaRepositoryImpl.java:1395: warning: [static] static method should be qualified by type name, ErrorHandler, instead of by an expression
+        throw errorHandler.getMappable(t, null, null, "savings.postinterest");
+                          ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/service/FixedDepositAccountInterestCalculationServiceImpl.java:59: warning: [unchecked] unchecked call to put(K,V) as a member of the raw type HashMap
+        result.put("maturityAmount", maturityAmount);
+                  ^
+  where K,V are type-variables:
+    K extends Object declared in class HashMap
+    V extends Object declared in class HashMap
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/service/FixedDepositAccountInterestCalculationServiceImpl.java:60: warning: [unchecked] unchecked call to put(K,V) as a member of the raw type HashMap
+        result.put("warning", warning);
+                  ^
+  where K,V are type-variables:
+    K extends Object declared in class HashMap
+    V extends Object declared in class HashMap
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/api/FixedDepositAccountsApiResource.java:255: warning: [unchecked] unchecked call to put(K,V) as a member of the raw type HashMap
+        request.put("annualInterestRate", annualInterestRate);
+                   ^
+  where K,V are type-variables:
+    K extends Object declared in class HashMap
+    V extends Object declared in class HashMap
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/api/FixedDepositAccountsApiResource.java:256: warning: [unchecked] unchecked call to put(K,V) as a member of the raw type HashMap
+        request.put("tenureInMonths", tenureInMonths);
+                   ^
+  where K,V are type-variables:
+    K extends Object declared in class HashMap
+    V extends Object declared in class HashMap
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/api/FixedDepositAccountsApiResource.java:257: warning: [unchecked] unchecked call to put(K,V) as a member of the raw type HashMap
+        request.put("interestCompoundingPeriodInMonths", interestCompoundingPeriodInMonths);
+                   ^
+  where K,V are type-variables:
+    K extends Object declared in class HashMap
+    V extends Object declared in class HashMap
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/api/FixedDepositAccountsApiResource.java:258: warning: [unchecked] unchecked call to put(K,V) as a member of the raw type HashMap
+        request.put("interestPostingPeriodInMonths", interestPostingPeriodInMonths);
+                   ^
+  where K,V are type-variables:
+    K extends Object declared in class HashMap
+    V extends Object declared in class HashMap
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/portfolio/savings/api/FixedDepositAccountsApiResource.java:259: warning: [unchecked] unchecked call to put(K,V) as a member of the raw type HashMap
+        request.put("principalAmount", principalAmount);
+                   ^
+  where K,V are type-variables:
+    K extends Object declared in class HashMap
+    V extends Object declared in class HashMap
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/interoperation/handler/CreateInteropIdentifierHandler.java:53: warning: [deprecation] trimWhitespace(String) in StringUtils has been deprecated
+        String subIdOrType = Strings.emptyToNull(StringUtils.trimWhitespace(split.get(length - 1)));
+                                                            ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/interoperation/handler/DeleteInteropIdentifierHandler.java:53: warning: [deprecation] trimWhitespace(String) in StringUtils has been deprecated
+        String subIdOrType = Strings.emptyToNull(StringUtils.trimWhitespace(split.get(length - 1)));
+                                                            ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/bulkimport/populator/savings/SavingsTransactionsWorkbookPopulator.java:108: warning: [deprecation] setCellType(CellType) in Cell has been deprecated
+                cell.setCellType(CellType.STRING);
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/bulkimport/populator/recurringdeposit/RecurringDepositTransactionWorkbookPopulator.java:109: warning: [deprecation] setCellType(CellType) in Cell has been deprecated
+                cell.setCellType(CellType.STRING);
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/bulkimport/populator/fixeddeposits/FixedDepositTransactionWorkbookPopulator.java:108: warning: [deprecation] setCellType(CellType) in Cell has been deprecated
+                cell.setCellType(CellType.STRING);
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/reportmailingjob/data/ReportMailingJobEmailAttachmentFileFormat.java:53: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+        if (StringUtils.equalsIgnoreCase(value, XLS.value)) {
+                       ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/reportmailingjob/data/ReportMailingJobEmailAttachmentFileFormat.java:55: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+        } else if (StringUtils.equalsIgnoreCase(value, PDF.value)) {
+                              ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/reportmailingjob/data/ReportMailingJobEmailAttachmentFileFormat.java:57: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+        } else if (StringUtils.equalsIgnoreCase(value, CSV.value)) {
+                              ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/reportmailingjob/data/ReportMailingJobStretchyReportParamDateOption.java:58: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+        if (StringUtils.equalsIgnoreCase(value, TODAY.value)) {
+                       ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/reportmailingjob/data/ReportMailingJobStretchyReportParamDateOption.java:60: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+        } else if (StringUtils.equalsIgnoreCase(value, YESTERDAY.value)) {
+                              ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/reportmailingjob/data/ReportMailingJobStretchyReportParamDateOption.java:62: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+        } else if (StringUtils.equalsIgnoreCase(value, TOMORROW.value)) {
+                              ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/reportmailingjob/data/ReportMailingJobPreviousRunStatus.java:49: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+        if (StringUtils.equalsIgnoreCase(value, SUCCESS.value)) {
+                       ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/reportmailingjob/data/ReportMailingJobPreviousRunStatus.java:51: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+        } else if (StringUtils.equalsIgnoreCase(value, ERROR.value)) {
+                              ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:32: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:32: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:32: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:32: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:32: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:32: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:32: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:34: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:34: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:34: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:34: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:34: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:34: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:34: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:36: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:36: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:36: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:36: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:36: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:36: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:36: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:38: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:38: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:38: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:38: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:38: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:38: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/instancemode/api/InstanceModeApiResourceSwagger.java:38: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/campaigns/jobs/executereportmailingjobs/ExecuteReportMailingJobsTasklet.java:101: warning: [deprecation] containsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+                            if (StringUtils.containsIgnoreCase(key, "date")) {
+                                           ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/gcm/domain/Sender.java:708: warning: [deprecation] URL(String) in URL has been deprecated
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+                                                     ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/service/DatatableWriteServiceImpl.java:806: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+            if (!StringUtils.equalsIgnoreCase(code, newCode) || !StringUtils.equalsIgnoreCase(oldName, newName)) {
+                            ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/service/DatatableWriteServiceImpl.java:806: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+            if (!StringUtils.equalsIgnoreCase(code, newCode) || !StringUtils.equalsIgnoreCase(oldName, newName)) {
+                                                                            ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/service/DatatableWriteServiceImpl.java:807: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+                if (StringUtils.equalsIgnoreCase(code, newCode)) {
+                               ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/service/DatatableWriteServiceImpl.java:821: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+                        if (newCode == null || !StringUtils.equalsIgnoreCase(oldName, newName)) {
+                                                           ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/service/DatatableWriteServiceImpl.java:827: warning: [deprecation] equalsIgnoreCase(CharSequence,CharSequence) in StringUtils has been deprecated
+                        if (code == null || !StringUtils.equalsIgnoreCase(oldName, newName)) {
+                                                        ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/service/DatatableWriteServiceImpl.java:944: warning: [deprecation] <T>defaultIfNull(T,T) in ObjectUtils has been deprecated
+        return ObjectUtils.defaultIfNull(codeId, 0);
+                          ^
+  where T is a type-variable:
+    T extends Object declared in method <T>defaultIfNull(T,T)
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/service/ReadReportingServiceImpl.java:149: warning: [deprecation] replaceIgnoreCase(String,String,String) in StringUtils has been deprecated
+        sql = StringUtils.replaceIgnoreCase(sql, "NOW()", sqlGenerator.currentTenantDateTime());
+                         ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/service/ReadReportingServiceImpl.java:150: warning: [deprecation] replaceIgnoreCase(String,String,String) in StringUtils has been deprecated
+        sql = StringUtils.replaceIgnoreCase(sql, "curdate()", sqlGenerator.currentBusinessDate());
+                         ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/service/ReadReportingServiceImpl.java:151: warning: [deprecation] replaceIgnoreCase(String,String,String) in StringUtils has been deprecated
+        sql = StringUtils.replaceIgnoreCase(sql, "CURRENT_DATE", sqlGenerator.currentBusinessDate());
+                         ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:60: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "DOB")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:60: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "DOB")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:60: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "DOB")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:60: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "DOB")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:60: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "DOB")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:60: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "DOB")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:60: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "DOB")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:62: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "String", description = "Any of them: Boolean | Date | DateTime | Decimal | Dropdown | Number | String | Text")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:62: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "String", description = "Any of them: Boolean | Date | DateTime | Decimal | Dropdown | Number | String | Text")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:62: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "String", description = "Any of them: Boolean | Date | DateTime | Decimal | Dropdown | Number | String | Text")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:62: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "String", description = "Any of them: Boolean | Date | DateTime | Decimal | Dropdown | Number | String | Text")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:62: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "String", description = "Any of them: Boolean | Date | DateTime | Decimal | Dropdown | Number | String | Text")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:62: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "String", description = "Any of them: Boolean | Date | DateTime | Decimal | Dropdown | Number | String | Text")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:62: warning: [deprecation] required() in Schema has been deprecated
+            @Schema(required = true, example = "String", description = "Any of them: Boolean | Date | DateTime | Decimal | Dropdown | Number | String | Text")
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:76: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "m_client")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:76: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "m_client")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:76: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "m_client")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:76: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "m_client")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:76: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "m_client")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:76: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "m_client")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:76: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "m_client")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:78: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "extra_client_details")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:78: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "extra_client_details")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:78: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "extra_client_details")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:78: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "extra_client_details")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:78: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "extra_client_details")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:78: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "extra_client_details")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:78: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "extra_client_details")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:82: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = false, description = "Allows to create multiple entries in the Data Table. Optional, defaults to false. If this property is not provided Data Table will allow only one entry.", example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:82: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = false, description = "Allows to create multiple entries in the Data Table. Optional, defaults to false. If this property is not provided Data Table will allow only one entry.", example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:82: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = false, description = "Allows to create multiple entries in the Data Table. Optional, defaults to false. If this property is not provided Data Table will allow only one entry.", example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:82: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = false, description = "Allows to create multiple entries in the Data Table. Optional, defaults to false. If this property is not provided Data Table will allow only one entry.", example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:82: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = false, description = "Allows to create multiple entries in the Data Table. Optional, defaults to false. If this property is not provided Data Table will allow only one entry.", example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:82: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = false, description = "Allows to create multiple entries in the Data Table. Optional, defaults to false. If this property is not provided Data Table will allow only one entry.", example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:82: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = false, description = "Allows to create multiple entries in the Data Table. Optional, defaults to false. If this property is not provided Data Table will allow only one entry.", example = "true")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:84: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true)
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:84: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true)
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:84: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true)
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:84: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true)
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:84: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true)
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:84: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true)
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/dataqueries/api/DatatablesApiResourceSwagger.java:84: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true)
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/data/PlatformRequestLog.java:56: warning: [deprecation] getStartTime() in StopWatch has been deprecated
+        return new PlatformRequestLog().setStartTime(task.getStartTime()).setTotalTime(task.getTime()).setMethod(request.getMethod())
+                                                         ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/config/AuthorizationServerConfig.java:146: warning: [removal] <C>apply(C) in AbstractConfiguredSecurityBuilder has been deprecated and marked for removal
+                .apply(authorizationServerConfigurer);
+                ^
+  where C,O,B are type-variables:
+    C extends SecurityConfigurerAdapter<O,B> declared in method <C>apply(C)
+    O extends Object declared in class AbstractConfiguredSecurityBuilder
+    B extends SecurityBuilder<O> declared in class AbstractConfiguredSecurityBuilder
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/vote/SelfServiceUserAuthorizationManager.java:31: warning: [deprecation] check(Supplier<Authentication>,T) in AuthorizationManager has been deprecated
+    public AuthorizationDecision check(Supplier<Authentication> authentication, RequestAuthorizationContext fi) {
+                                 ^
+  where T is a type-variable:
+    T extends Object declared in interface AuthorizationManager
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/config/KeycloakResourceServerConfig.java:166: warning: [unchecked] unchecked method invocation: method allOf in class AuthorizationManagers is applied to given types
+                            .access(allOf(managers.toArray(new AuthorizationManager[0])));
+                                         ^
+  required: AuthorizationManager<T>[]
+  found:    AuthorizationManager[]
+  where T is a type-variable:
+    T extends Object declared in method <T>allOf(AuthorizationManager<T>...)
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/config/KeycloakResourceServerConfig.java:166: warning: [unchecked] unchecked conversion
+                            .access(allOf(managers.toArray(new AuthorizationManager[0])));
+                                                          ^
+  required: AuthorizationManager<T>[]
+  found:    AuthorizationManager[]
+  where T is a type-variable:
+    T extends Object declared in method <T>allOf(AuthorizationManager<T>...)
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/config/KeycloakResourceServerConfig.java:166: warning: [unchecked] unchecked method invocation: method access in class AuthorizeHttpRequestsConfigurer.AuthorizedUrl is applied to given types
+                            .access(allOf(managers.toArray(new AuthorizationManager[0])));
+                                   ^
+  required: AuthorizationManager<RequestAuthorizationContext>
+  found:    AuthorizationManager
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/config/KeycloakResourceServerConfig.java:166: warning: [unchecked] unchecked conversion
+                            .access(allOf(managers.toArray(new AuthorizationManager[0])));
+                                         ^
+  required: AuthorizationManager<RequestAuthorizationContext>
+  found:    AuthorizationManager
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/config/KeycloakResourceServerConfig.java:206: error: cannot find symbol
+        return JwtDecoders.createFromIssuerLocation(issuerUri);
+                          ^
+  symbol:   method createFromIssuerLocation(String)
+  location: class JwtDecoders
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:42: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "mifos")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:42: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "mifos")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:42: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "mifos")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:42: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "mifos")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:42: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "mifos")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:42: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "mifos")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:42: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "mifos")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:44: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "password")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:44: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "password")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:44: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "password")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:44: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "password")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:44: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "password")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:44: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "password")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/security/api/AuthenticationApiResourceSwagger.java:44: warning: [deprecation] required() in Schema has been deprecated
+        @Schema(required = true, example = "password")
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/service/migration/TenantDatabaseUpgradeService.java:91: warning: [deprecation] ThreadLocalScopeManager in liquibase has been deprecated
+            Scope.setScopeManager(new ThreadLocalScopeManager());
+                                      ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/auditing/CustomAuditingHandler.java:56: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    public CustomAuditingHandler(MappingContext<? extends PersistentEntity<?, ?>, ? extends PersistentProperty<?>> mappingContext,
+           ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/config/SecurityConfig.java:166: warning: [unchecked] unchecked method invocation: method allOf in class AuthorizationManagers is applied to given types
+                    .access(allOf(authorizationManagers.toArray(new AuthorizationManager[0])));
+                                 ^
+  required: AuthorizationManager<T>[]
+  found:    AuthorizationManager[]
+  where T is a type-variable:
+    T extends Object declared in method <T>allOf(AuthorizationManager<T>...)
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/config/SecurityConfig.java:166: warning: [unchecked] unchecked conversion
+                    .access(allOf(authorizationManagers.toArray(new AuthorizationManager[0])));
+                                                               ^
+  required: AuthorizationManager<T>[]
+  found:    AuthorizationManager[]
+  where T is a type-variable:
+    T extends Object declared in method <T>allOf(AuthorizationManager<T>...)
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/config/SecurityConfig.java:166: warning: [unchecked] unchecked method invocation: method access in class AuthorizeHttpRequestsConfigurer.AuthorizedUrl is applied to given types
+                    .access(allOf(authorizationManagers.toArray(new AuthorizationManager[0])));
+                           ^
+  required: AuthorizationManager<RequestAuthorizationContext>
+  found:    AuthorizationManager
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/config/SecurityConfig.java:166: warning: [unchecked] unchecked conversion
+                    .access(allOf(authorizationManagers.toArray(new AuthorizationManager[0])));
+                                 ^
+  required: AuthorizationManager<RequestAuthorizationContext>
+  found:    AuthorizationManager
+warning: [deprecation] ChannelSecurityConfigurer in org.springframework.security.config.annotation.web.configurers has been deprecated
+warning: [deprecation] ChannelSecurityConfigurer.ChannelRequestMatcherRegistry in ChannelSecurityConfigurer has been deprecated
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/config/SecurityConfig.java:188: warning: [deprecation] requiresChannel(Customizer<ChannelSecurityConfigurer<HttpSecurity>.ChannelRequestMatcherRegistry>) in HttpSecurity has been deprecated
+            http.requiresChannel(channel -> channel.requestMatchers(API_MATCHER.matcher("/api/**")).requiresSecure());
+                ^
+warning: [deprecation] ChannelSecurityConfigurer in org.springframework.security.config.annotation.web.configurers has been deprecated
+warning: [deprecation] ChannelSecurityConfigurer.ChannelRequestMatcherRegistry in ChannelSecurityConfigurer has been deprecated
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/config/SecurityConfig.java:192: warning: [deprecation] requiresChannel(Customizer<ChannelSecurityConfigurer<HttpSecurity>.ChannelRequestMatcherRegistry>) in HttpSecurity has been deprecated
+            http.requiresChannel(channel -> channel.anyRequest().requiresSecure()).headers(
+                ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/config/SecurityConfig.java:250: warning: [deprecation] DaoAuthenticationProvider() in DaoAuthenticationProvider has been deprecated
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+                                                 ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/config/SecurityConfig.java:251: warning: [deprecation] setUserDetailsService(UserDetailsService) in DaoAuthenticationProvider has been deprecated
+        authProvider.setUserDetailsService(userDetailsService);
+                    ^
+/var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/fineract-provider/src/main/java/org/apache/fineract/infrastructure/core/jersey/serializer/JacksonLocalDateBeanSerializerModifier.java:54: warning: [deprecation] getPropertyType() in BeanPropertyWriter has been deprecated
+            if (LocalDate.class.equals(writer.getPropertyType())) {
+                                             ^
+1 error
+145 warnings
+
+> Task :fineract-provider:compileJava FAILED
+
+[Incubating] Problems report is available at: file:///var/jenkins_home/jobs/atparui/jobs/fineract/branches/develop/workspace/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':fineract-provider:compileJava'.
+> Compilation failed; see the compiler output below.
+  warning: No processor claimed any of these annotations: /org.springframework.context.annotation.Primary,/io.swagger.v3.oas.annotations.Parameter,/org.springframework.core.annotation.Order,/org.springframework.scheduling.annotation.Async,/org.mapstruct.Mapper,/jakarta.validation.constraints.NotNull,/io.swagger.v3.oas.annotations.responses.ApiResponses,/org.springframework.boot.context.properties.ConfigurationProperties,/jakarta.persistence.Entity,/retrofit2.http.Body,/org.springframework.context.annotation.Scope,/org.springframework.beans.factory.annotation.Value,/jakarta.validation.Valid,/org.springframework.stereotype.Component,/org.apache.fineract.validation.constraints.EnumValue,/org.springframework.boot.context.properties.EnableConfigurationProperties,/org.springframework.cache.annotation.CachePut,/org.springframework.transaction.annotation.Transactional,/io.swagger.v3.oas.annotations.media.Schema,/retrofit2.http.FormUrlEncoded,/org.springframework.web.bind.annotation.GetMapping,/org.springframework.context.annotation.Bean,/jakarta.persistence.Column,/jakarta.persistence.Basic,/org.springframework.transaction.annotation.EnableTransactionManagement,/jakarta.persistence.JoinColumn,/org.springframework.context.annotation.Import,/jakarta.persistence.Enumerated,/jakarta.persistence.ManyToMany,/org.springframework.batch.core.annotation.OnWriteError,/org.springframework.web.bind.annotation.RequestParam,/jakarta.persistence.Version,/io.swagger.v3.oas.annotations.responses.ApiResponse,/org.springframework.stereotype.Controller,/org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean,/org.mapstruct.Named,/com.fasterxml.jackson.annotation.JsonIgnore,/jakarta.persistence.Converter,/jakarta.persistence.Temporal,/com.google.gson.annotations.SerializedName,/jakarta.validation.constraints.Min,/org.springframework.context.annotation.DependsOn,/jakarta.persistence.DiscriminatorValue,/org.glassfish.jersey.media.multipart.FormDataParam,/jakarta.persistence.Id,/jakarta.persistence.OrderBy,/org.springframework.context.annotation.Conditional,/org.springframework.boot.autoconfigure.condition.ConditionalOnProperty,/org.apache.fineract.validation.constraints.Locale,/jakarta.persistence.Embeddable,/com.fasterxml.jackson.annotation.JsonProperty,/org.springframework.batch.core.configuration.annotation.JobScope,/jakarta.ws.rs.Path,/retrofit2.http.Header,/jakarta.ws.rs.PUT,/org.springframework.messaging.handler.annotation.Payload,/jakarta.ws.rs.ext.Provider,/org.springframework.security.config.annotation.web.configuration.EnableWebSecurity,/org.springframework.data.jpa.repository.Modifying,/io.swagger.v3.oas.annotations.parameters.RequestBody,/org.springframework.context.annotation.Lazy,/org.springframework.web.bind.annotation.RequestBody,/org.springframework.batch.core.annotation.OnSkipInWrite,/org.mapstruct.Mapping,/io.micrometer.core.annotation.Timed,/jakarta.annotation.Nullable,/org.springframework.batch.core.annotation.AfterStep,/org.springframework.scheduling.annotation.EnableAsync,/io.github.resilience4j.retry.annotation.Retry,/org.springframework.lang.NonNull,/org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity,/org.springframework.boot.autoconfigure.condition.ConditionalOnBean,/com.fasterxml.jackson.databind.annotation.JsonDeserialize,/org.springframework.beans.factory.annotation.Autowired,/jakarta.ws.rs.DELETE,java.desktop/java.beans.Transient,/jakarta.validation.constraints.NotNull.List,/org.springframework.cache.annotation.Caching,/jakarta.persistence.EmbeddedId,/org.springframework.data.jpa.repository.config.EnableJpaRepositories,/jakarta.ws.rs.QueryParam,/jakarta.ws.rs.GET,/org.springframework.data.jpa.repository.Query,/jakarta.ws.rs.HeaderParam,/jakarta.ws.rs.ApplicationPath,/org.mapstruct.Mappings,/io.swagger.v3.oas.annotations.tags.Tag,/org.springframework.batch.integration.config.annotation.EnableBatchIntegration,/jakarta.ws.rs.DefaultValue,/org.apache.fineract.validation.constraints.LocalDate,/jakarta.persistence.JoinTable,/com.fasterxml.jackson.annotation.JsonTypeInfo,/org.springframework.kafka.annotation.KafkaListener,/org.springframework.batch.core.annotation.OnSkipInRead,/org.springframework.beans.factory.annotation.Qualifier,/jakarta.validation.constraints.NotBlank,/org.springframework.batch.core.configuration.annotation.EnableBatchProcessing,/org.apache.fineract.commands.annotation.CommandType,/org.springframework.stereotype.Service,/jakarta.validation.constraints.NotEmpty,/org.apache.fineract.infrastructure.core.jersey.serializer.legacy.JsonLocalDateArrayFormat,/org.springframework.data.jpa.repository.config.EnableJpaAuditing,/org.springframework.data.jpa.repository.Lock,/jakarta.ws.rs.core.Context,/jakarta.validation.constraints.Size,/jakarta.ws.rs.Consumes,/jakarta.ws.rs.PathParam,/jakarta.persistence.OneToOne,/edu.umd.cs.findbugs.annotations.SuppressFBWarnings,/org.springframework.context.annotation.Configuration,/jakarta.persistence.Transient,/jakarta.annotation.PostConstruct,/org.springframework.cache.annotation.Cacheable,/org.springframework.context.annotation.EnableAspectJAutoProxy,/com.fasterxml.jackson.databind.annotation.JsonSerialize,/jakarta.persistence.OneToMany,/org.springframework.data.repository.query.Param,/org.springframework.security.core.Transient,/org.springframework.context.annotation.ComponentScan,/org.springframework.integration.annotation.IntegrationComponentScan,/jakarta.persistence.Table,/org.springframework.batch.core.annotation.OnReadError,/jakarta.persistence.Embedded,/org.springframework.stereotype.Repository,/org.springframework.cache.annotation.CacheEvict,/jakarta.persistence.ManyToOne,/org.apache.fineract.infrastructure.core.api.jersey.Pagination,/retrofit2.http.POST,/com.fasterxml.jackson.annotation.JsonInclude,/org.springframework.batch.core.annotation.BeforeStep,/org.springframework.batch.core.annotation.OnProcessError,/org.springframework.boot.autoconfigure.EnableAutoConfiguration,/jakarta.ws.rs.Produces,/org.springframework.context.annotation.Profile,/retrofit2.http.FieldMap,/org.springframework.lang.Nullable,/org.springframework.batch.core.annotation.OnSkipInProcess,/io.swagger.v3.oas.annotations.Operation,/org.springframework.cache.annotation.CacheConfig,/io.swagger.v3.oas.annotations.Parameters,/jakarta.ws.rs.BeanParam,/org.apache.fineract.infrastructure.report.annotation.ReportService,/org.springframework.boot.autoconfigure.condition.ConditionalOnExpression,/jakarta.transaction.Transactional,/org.springframework.batch.core.configuration.annotation.StepScope,/jakarta.ws.rs.POST,/org.apache.fineract.infrastructure.core.annotation.WithFlushMode,/retrofit2.http.GET
+  1 error
+  145 warnings
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 1m 16s
+67 actionable tasks: 2 executed, 65 up-to-date
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Jib Build & Push)
+Stage "Jib Build & Push" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to Platform)
+Stage "Deploy to Platform" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] echo
+❌ Fineract pipeline failed!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+
+GitHub has been notified of this commit’s build result
+
+Finished: FAILURE
