@@ -38,6 +38,7 @@ import org.apache.fineract.infrastructure.instancemode.filter.FineractInstanceMo
 import org.apache.fineract.infrastructure.jobs.filter.LoanCOBApiFilter;
 import org.apache.fineract.infrastructure.jobs.filter.LoanCOBFilterHelper;
 import org.apache.fineract.infrastructure.security.converter.KeycloakJwtAuthenticationTokenConverter;
+import org.apache.fineract.useradministration.service.KeycloakJitUserProvisioningService;
 import org.apache.fineract.infrastructure.security.filter.BusinessDateFilter;
 import org.apache.fineract.infrastructure.security.filter.TenantAwareAuthenticationFilter;
 import org.apache.fineract.infrastructure.security.filter.TwoFactorAuthenticationFilter;
@@ -96,6 +97,8 @@ public class KeycloakResourceServerConfig {
     private ApplicationContext applicationContext;
     @Autowired
     private TenantAwareJpaPlatformUserDetailsService userDetailsService;
+    @Autowired(required = false)
+    private KeycloakJitUserProvisioningService keycloakJitUserProvisioningService;
     @Autowired
     private FineractProperties fineractProperties;
     @Autowired
@@ -207,7 +210,7 @@ public class KeycloakResourceServerConfig {
 
     @Bean
     public KeycloakJwtAuthenticationTokenConverter keycloakJwtAuthenticationTokenConverter() {
-        return new KeycloakJwtAuthenticationTokenConverter(userDetailsService);
+        return new KeycloakJwtAuthenticationTokenConverter(userDetailsService, keycloakJitUserProvisioningService);
     }
 
     @Bean

@@ -583,6 +583,19 @@ public class FineractProperties {
 
             private boolean enabled;
             private String issuerUri;
+            private FineractSecurityKeycloakJitProperties jit = new FineractSecurityKeycloakJitProperties();
+
+            @Getter
+            @Setter
+            public static class FineractSecurityKeycloakJitProperties {
+
+                /** When true, create a Fineract user on first Keycloak login if missing (JIT provisioning). */
+                private boolean enabled = true;
+                /** Default Fineract role name for JIT-provisioned users (e.g. "Self Service User"). */
+                private String defaultRoleName = "Self Service User";
+                /** Default office id for JIT-provisioned users; if not set, first office by id is used. */
+                private Long defaultOfficeId;
+            }
         }
     }
 

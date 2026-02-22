@@ -22,9 +22,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import lombok.RequiredArgsConstructor;
 import org.apache.fineract.infrastructure.security.data.FineractJwtAuthenticationToken;
 import org.apache.fineract.infrastructure.security.service.TenantAwareJpaPlatformUserDetailsService;
+import org.apache.fineract.useradministration.service.KeycloakJitUserProvisioningService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.GrantedAuthority;
@@ -41,12 +41,19 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtGra
  * Converts a Keycloak-issued JWT into a Fineract authentication token. Uses
  * preferred_username (or sub) as the Fineract username and maps Keycloak
  * realm_access.roles to authorities. The user must exist in Fineract (m_appuser)
- * for the tenant determined by the request.
+ * for the tenant determined by the request. When JIT provisioning is enabled,
+ * a missing user is created on first login (default office and role).
  */
-@RequiredArgsConstructor
 public class KeycloakJwtAuthenticationTokenConverter implements Converter<Jwt, FineractJwtAuthenticationToken> {
 
     private final TenantAwareJpaPlatformUserDetailsService userDetailsService;
+    private final KeycloakJitUserProvisioningService jitProvisioningService;
+
+    public KeycloakJwtAuthenticationTokenConverter(TenantAwareJpaPlatformUserDetailsService userDetailsService,
+            KeycloakJitUserProvisioningService jitProvisioningService) {
+        this.userDetailsService = userDetailsService;
+        this.jitProvisioningService = jitProvisioningService;
+    }
 
     @Override
     @NonNull
@@ -57,6 +64,12 @@ public class KeycloakJwtAuthenticationTokenConverter implements Converter<Jwt, F
             Collection<GrantedAuthority> authorities = mergeAuthorities(jwt, user.getAuthorities());
             return new FineractJwtAuthenticationToken(jwt, authorities, user);
         } catch (UsernameNotFoundException ex) {
+            if (jitProvisioningService != null && jitProvisioningService.isJitEnabled()) {
+                jitProvisioningService.provisionUserIfAbsent(username, jwt);
+                UserDetails user = userDetailsService.loadUserByUsername(username);
+                Collection<GrantedAuthority> authorities = mergeAuthorities(jwt, user.getAuthorities());
+                return new FineractJwtAuthenticationToken(jwt, authorities, user);
+            }
             throw new OAuth2AuthenticationException(new OAuth2Error(OAuth2ErrorCodes.INVALID_TOKEN), ex);
         }
     }
